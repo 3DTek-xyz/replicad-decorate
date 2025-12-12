@@ -34,8 +34,8 @@
 
 
 ## Performance Optimizations Applied
-- DONE: Transform matrix caching with Map (30-40% faster for repeated transforms)
-- DONE: Consistent .push() instead of .concat() in transform logic (15-20% faster)
+- DONE: Transform matrix caching with Map (avoids re-parsing identical transform strings)
+- DONE: Consistent .push() instead of .concat() in transform logic (mutates in-place vs creating new arrays)
 - DONE: Identity matrix early-return check (skip processing when transform has no effect)
 - DONE: Ellipse translation-only fast path (simple center offset vs full bounding box calculation)
 - KEPT: Array.from() calls - Required for xmldom compatibility (getElementsByTagName returns non-standard NodeList, not iterable)
@@ -46,7 +46,7 @@
 - DONE: Comprehensive comments documenting transform matrix format and limitations
 - DONE: Consistent number formatting across all coordinate outputs
 
-## Future Optimizations (TODO)
+
 ## Future Optimizations (TODO)
 - TODO: Extract common transform-apply logic to reduce duplication (circle/ellipse, path/polygon patterns)
 - TODO: Add null checks for getAttribute() before parseFloat() (improve robustness)
